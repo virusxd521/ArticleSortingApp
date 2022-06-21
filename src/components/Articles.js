@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Articles() {
+function Articles({sortedList}) {
 
     return (
         <div className="card w-50 mx-auto">
@@ -13,11 +13,18 @@ function Articles() {
                 </tr>
                 </thead>
                 <tbody>
-                <tr data-testid="article" key="article-index">
-                    <td data-testid="article-title">Article 1 title</td>
-                    <td data-testid="article-upvotes">Article 1 title</td>
-                    <td data-testid="article-date">Article 1 title</td>
-                </tr>
+                    {
+                        sortedList.map((article, id) => {
+                         return   (
+                            <tr key={id} data-testid="article">
+                                <td data-testid="article-title">{article.title}</td>
+                               <td data-testid="article-upvotes">{article.upvotes}</td>
+                               <td data-testid="article-date">{article.date}</td>
+                            </tr>                            
+                         )
+
+                        })
+                    }
                 </tbody>
             </table>
         </div>
